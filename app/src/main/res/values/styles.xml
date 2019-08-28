@@ -23,7 +23,7 @@
     </style>
 
     <style name="AppTheme.Splash" parent="AppTheme.FullScreen">
-
+        <item name="android:background">@drawable/splash_background</item>
     </style>
 
 </resources>
