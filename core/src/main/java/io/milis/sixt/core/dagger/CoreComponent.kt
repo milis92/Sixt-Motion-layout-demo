@@ -6,6 +6,8 @@ import android.app.Service
 import android.content.SharedPreferences
 import dagger.BindsInstance
 import dagger.Component
+import io.milis.sixt.core.common.worker.SixtWorkerFactory
+import io.milis.sixt.core.common.worker.WorkerProvider
 import io.milis.sixt.core.dagger.providers.CoreModule
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Io
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Main
@@ -24,6 +26,8 @@ abstract class CoreComponent : BaseComponent<Application> {
 
     @Named(Main)
     abstract fun schedulerMain(): Scheduler
+
+    abstract fun workerFactory() : SixtWorkerFactory
 
     abstract fun sharedPreferences(): SharedPreferences
 

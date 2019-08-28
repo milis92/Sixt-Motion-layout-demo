@@ -2,7 +2,7 @@ package io.milis.sixt.ui.splash
 
 import android.os.Bundle
 import io.milis.sixt.R
-import io.milis.sixt.core.common.MvpActivity
+import io.milis.sixt.core.common.mvp.MvpActivity
 import io.milis.sixt.ext.launchActivity
 import io.milis.sixt.LaunchCodes
 import kotlinx.android.synthetic.main.activity_splash.*

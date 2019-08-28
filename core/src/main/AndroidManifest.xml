@@ -1,2 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.milis.sixt.core" />
+    package="io.milis.sixt.core">
+
+
+    <application>
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            android:exported="false" />
+    </application>
+
+</manifest>

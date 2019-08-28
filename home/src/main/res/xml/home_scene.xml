@@ -50,6 +50,8 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint
             android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"

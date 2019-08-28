@@ -1,4 +1,4 @@
-package io.milis.sixt.core.common
+package io.milis.sixt.core.common.mvp
 
 import javax.inject.Inject
 import javax.inject.Provider

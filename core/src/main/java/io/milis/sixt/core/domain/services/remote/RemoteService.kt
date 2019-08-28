@@ -1,13 +1,15 @@
 package io.milis.sixt.core.domain.services.remote
 
+import io.milis.sixt.core.domain.services.entities.Car
 import io.reactivex.Completable
-import retrofit2.http.Body
-import retrofit2.http.POST
+import io.reactivex.Single
+import retrofit2.http.*
 
 interface RemoteService {
 
-    @POST("/oauth/token")
-    fun signIn(@Body hashMap: HashMap<String, Any>): Completable
+    @Headers("X-Anonymous: true")
+    @GET("/codingtask/cars")
+    fun getCars(): Single<List<Car>>
 
 
 }

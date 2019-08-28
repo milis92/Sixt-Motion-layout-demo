@@ -6,7 +6,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.mancj.materialsearchbar.MaterialSearchBar
-import io.milis.sixt.core.common.MvpActivity
+import io.milis.sixt.core.common.mvp.MvpActivity
 import io.milis.sixt.home.R
 import kotlinx.android.synthetic.main.activity_home.*
 

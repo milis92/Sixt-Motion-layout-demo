@@ -1,4 +1,4 @@
-package io.milis.sixt.core.common
+package io.milis.sixt.core.common.mvp
 
 class MvpPresenterProvider {
 

@@ -13,7 +13,9 @@ import io.milis.sixt.core.BuildConfig
             RetrofitModule::class,
             OkHttpModule::class,
             ServiceModule::class,
-            SchedulerModule::class
+            SchedulerModule::class,
+            WorkerAssistedModule::class,
+            WorkerFactoryModule::class
         ]
 )
 internal class CoreModule {

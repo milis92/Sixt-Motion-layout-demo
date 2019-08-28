@@ -4,9 +4,9 @@ import io.milis.sixt.core.dagger.mapkeys.PresenterClass
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import io.milis.sixt.core.common.MvpPresenter
-import io.milis.sixt.core.common.MvpPresenterFactory
-import io.milis.sixt.core.common.MvpPresenterProvider
+import io.milis.sixt.core.common.mvp.MvpPresenter
+import io.milis.sixt.core.common.mvp.MvpPresenterFactory
+import io.milis.sixt.core.common.mvp.MvpPresenterProvider
 
 @Module
 internal abstract class SplashModule {
