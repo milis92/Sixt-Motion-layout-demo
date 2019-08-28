@@ -1,4 +1,4 @@
-package io.milis.core.domain.services.remote
+package io.milis.sixt.core.domain.services.remote
 
 import io.reactivex.Completable
 import retrofit2.http.Body

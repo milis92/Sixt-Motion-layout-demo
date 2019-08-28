@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class MvpActivity : AppCompatActivity(), MvpView {
 
-    abstract val presenter: MvpPresenter<*>
+    abstract val presenter: MvpPresenter<MvpView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

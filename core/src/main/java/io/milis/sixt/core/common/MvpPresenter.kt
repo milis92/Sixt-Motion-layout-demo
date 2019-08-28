@@ -3,20 +3,16 @@ package io.milis.sixt.core.common
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
-abstract class MvpPresenter<T : MvpView> {
+abstract class MvpPresenter<in T : MvpView> {
 
-    private var mvpViewReference: WeakReference<T>? = null
+    private var view: WeakReference<T>? = null
 
-    protected val view by lazy {
-        mvpViewReference?.get()
-    }
-
-    fun onCreate(view: T) {
-        this.mvpViewReference = WeakReference(view)
+    fun  onCreate(view: T) {
+        this.view = WeakReference(view)
     }
 
     open fun onDestroy() {
-        mvpViewReference?.clear()
+        view?.clear()
     }
 }
 
@@ -28,5 +24,4 @@ class MvpRxPresenter<T : MvpView> : MvpPresenter<T>() {
         compositeDisposable.clear()
         super.onDestroy()
     }
-
 }
