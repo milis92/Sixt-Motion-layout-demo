@@ -1,10 +1,10 @@
-package io.milis.sixt.core.ext
+package io.milis.sixt.ext
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import io.milis.sixt.core.BuildConfig
+import io.milis.sixt.BuildConfig
 
 inline fun <reified T : Any> Activity.launchActivity(
         requestCode: Int = -1,

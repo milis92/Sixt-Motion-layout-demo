@@ -16,7 +16,7 @@ abstract class MvpPresenter<in T : MvpView> {
     }
 }
 
-class MvpRxPresenter<T : MvpView> : MvpPresenter<T>() {
+open class MvpRxPresenter<T : MvpView> : MvpPresenter<T>() {
 
     protected val compositeDisposable = CompositeDisposable()
 
