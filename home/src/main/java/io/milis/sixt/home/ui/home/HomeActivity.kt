@@ -13,7 +13,7 @@ import io.milis.sixt.home.R
 import kotlinx.android.synthetic.main.activity_home.*
 
 
-class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionListener, OnMapReadyCallback {
+    class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionListener, OnMapReadyCallback {
 
     override val presenter by presenterProvider(HomePresenter::class.java, this)
 
@@ -29,6 +29,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
         searchBar.setPlaceHolder(getString(R.string.home_search_placeholder))
         searchBar.setCardViewElevation(12)
         searchBar.setOnSearchActionListener(this)
+        searchBar
 
         (map as SupportMapFragment).getMapAsync(this)
     }
@@ -58,18 +59,15 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     }
 
     override fun onCarsLoaded(cars: List<Car>) {
+        googleMap.clear()
         cars.forEach {
             val marker = marker {
                 position {
-                    latitude { plus(it.latitude) }
-                    longitude { plus(it.longitude) }
+                    latitude { it.latitude }
+                    longitude { it.longitude }
                 }
-                name {
-                    plus("asdf")
-                }
-                snippet {
-                    plus("")
-                }
+                name { "asdf" }
+                snippet { "" }
             }
             googleMap.addMarker(marker)
         }

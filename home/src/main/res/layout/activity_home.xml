@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:mt_hint="@string/home_search_hint"
-            app:mt_maxSuggestionsCount="10"
+            app:mt_maxSuggestionsCount="5"
             app:mt_navIconEnabled="true"
             app:mt_roundedSearchBarEnabled="true"
             app:mt_speechMode="true" />

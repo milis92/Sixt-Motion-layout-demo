@@ -6,7 +6,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-@DslMarker
+@DslMarker()
 annotation class MarkerDsl
 
 @MarkerDsl
@@ -22,12 +22,12 @@ class MarkerBuilder : Builder<MarkerOptions> {
         markerOptions.position(location(init))
     }
 
-    fun name(init: String.() -> Unit) {
-        markerOptions.title(String().apply(init))
+    fun name(init: () -> String) {
+        markerOptions.title(init.invoke())
     }
 
-    fun snippet(init: String.() -> Unit) {
-        markerOptions.snippet(String().apply(init))
+    fun snippet(init: () -> String) {
+        markerOptions.snippet(init.invoke())
     }
 
     fun drawable(init: DrawableBuilder.() -> Unit) {
@@ -44,12 +44,12 @@ class LocationBuilder : Builder<LatLng> {
     private var latitude: Double = 0.000000
     private var longitude: Double = 0.000000
 
-    fun latitude(init: Double.() -> Unit) {
-        latitude = 0.000000.apply(init)
+    fun latitude(init: () -> Double) {
+        latitude = init.invoke()
     }
 
-    fun longitude(init: Double.() -> Unit) {
-        latitude = 0.000000.apply(init)
+    fun longitude(init: () -> Double) {
+        latitude = init.invoke()
     }
 
     override fun build(): LatLng {

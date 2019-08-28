@@ -35,11 +35,11 @@ android {
     productFlavors {
         staging {
             dimension "configuration"
-            buildConfigField "String", "API_BASE_URL", '"https://api.bmapp.ch/"'
+            buildConfigField "String", "API_BASE_URL", '"https://cdn.sixt.io"'
         }
         production {
             dimension "configuration"
-            buildConfigField "String", "API_BASE_URL", '"https://https://api.bmapp.ch/"'
+            buildConfigField "String", "API_BASE_URL", '" https://cdn.sixt.io"'
         }
     }
 }

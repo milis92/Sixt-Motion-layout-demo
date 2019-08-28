@@ -13,6 +13,6 @@ abstract class WorkerFactoryModule {
     @Binds
     @IntoMap
     @WorkerClass(DataSyncWorker::class)
-    internal abstract fun bindEmailInvalidationWorker(factory: DataSyncWorker.Factory): WorkerProvider.Factory
+    internal abstract fun bindDataSyncWorker(factory: DataSyncWorker.Factory): WorkerProvider.Factory
 
 }
