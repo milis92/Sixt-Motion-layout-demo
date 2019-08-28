@@ -22,6 +22,8 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
         setContentView(R.layout.activity_home)
         inject()
 
+        motionLayout.transitionToEnd()
+
         searchBar.setPlaceHolder(getString(R.string.home_search_placeholder))
         searchBar.setCardViewElevation(12)
         searchBar.setOnSearchActionListener(this)

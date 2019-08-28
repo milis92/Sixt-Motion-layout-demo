@@ -3,12 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:theme="@style/AppTheme.Home">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:theme="@style/AppTheme.Home">
+        app:applyMotionScene="true"
+        app:layoutDescription="@xml/home_scene"
+        app:showPaths="false">
 
         <fragment
             android:id="@+id/map"
@@ -28,7 +32,7 @@
             app:mt_roundedSearchBarEnabled="true"
             app:mt_speechMode="true" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
