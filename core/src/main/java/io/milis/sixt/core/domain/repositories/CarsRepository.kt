@@ -30,6 +30,6 @@ class CarsRepository @Inject constructor(private val carsDao: CarDao,
     fun getCars(): Flowable<List<Car>> = carsDao.getAll()
 
     @CheckReturnValue
-    fun filter(query: String) = carsDao.filter(query)
+    fun findSimilar(make: String, modelName: String) = carsDao.filter(make, modelName)
 
 }

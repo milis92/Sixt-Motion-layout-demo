@@ -21,8 +21,8 @@ abstract class CarDao {
     abstract fun getSingle(id: String): Single<Car>
 
     @CheckReturnValue
-    @Query("SELECT * FROM cars WHERE make LIKE  '%' || :query || '%' OR model_name LIKE '%' || :query || '%'")
-    abstract fun filter(query: String): Single<List<Car>>
+    @Query("SELECT * FROM cars WHERE make LIKE  '%' || :make || '%' OR model_name LIKE '%' || :modelName || '%'")
+    abstract fun filter(make: String, modelName: String): Single<List<Car>>
 
     @CheckReturnValue
     @Delete

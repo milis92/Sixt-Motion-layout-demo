@@ -4,6 +4,7 @@ import io.milis.sixt.core.common.mvp.MvpRxPresenter
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Io
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Main
 import io.milis.sixt.core.domain.repositories.CarsRepository
+import io.milis.sixt.core.domain.services.entities.Car
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -27,8 +28,8 @@ class HomePresenter @Inject constructor(@Named(Io) private val schedulerIo: Sche
                         }).addTo(compositeDisposable)
     }
 
-    fun onSearchConfirmed(query: String) {
-        carsRepository.filter(query)
+    fun onSearchConfirmed(make: String, modelName: String) {
+        carsRepository.findSimilar(make, modelName)
                 .observeOn(schedulerMain)
                 .subscribeOn(schedulerIo)
                 .subscribeBy(
@@ -39,6 +40,7 @@ class HomePresenter @Inject constructor(@Named(Io) private val schedulerIo: Sche
 
                         }).addTo(compositeDisposable)
     }
+
 
 }
 

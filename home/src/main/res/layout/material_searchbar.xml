@@ -102,7 +102,6 @@
                         android:maxLines="1"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/orange"
-                        android:textCursorDrawable="@drawable/color_cursor"
                         android:visibility="visible" />
 
                     <ImageView
