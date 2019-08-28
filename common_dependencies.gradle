@@ -36,4 +36,6 @@ dependencies {
 
     //Common
     implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
 }

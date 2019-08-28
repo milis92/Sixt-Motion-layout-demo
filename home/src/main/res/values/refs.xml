@@ -1,0 +1,3 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <item name="searchbar" type="layout" tools:override="true">@layout/material_searchbar</item>
+</resources>

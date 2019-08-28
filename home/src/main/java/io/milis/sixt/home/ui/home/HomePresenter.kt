@@ -10,6 +10,9 @@ import javax.inject.Named
 class HomePresenter @Inject constructor(@Named(Io) private val schedulerIo: Scheduler,
                                         @Named(Main) private val schedulerMain: Scheduler) : MvpPresenter<HomeView>() {
 
+    fun onMapCreated() {
+
+    }
 
 }
 

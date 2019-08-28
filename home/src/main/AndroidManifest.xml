@@ -1,7 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
     package="io.milis.sixt.home">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <dist:module
         dist:instant="false"
@@ -11,11 +14,12 @@
     </dist:module>
 
     <application tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Home"
-            android:windowSoftInputMode="adjustResize" />
+            android:theme="@style/AppTheme.Home" />
     </application>
+
 </manifest>

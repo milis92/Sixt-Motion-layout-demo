@@ -28,7 +28,8 @@ buildscript {
             'viewPager2'         : '1.0.0-alpha02',
             'rxKotlin'           : '2.4.0',
             'rxAndroid'          : '2.1.1',
-            'rxJava'             : '2.2.12'
+            'rxJava'             : '2.2.12',
+            'maps'               : '17.0.0'
     ]
 
     ext.names = [

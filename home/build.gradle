@@ -1,6 +1,8 @@
 apply plugin: 'com.android.dynamic-feature'
 
 apply from: '../common_dependencies.gradle'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -33,5 +35,5 @@ dependencies {
     implementation project(':app')
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
-    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
+    implementation "com.github.mancj:MaterialSearchBar:0.8.2"
 }
