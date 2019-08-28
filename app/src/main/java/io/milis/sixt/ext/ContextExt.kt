@@ -17,7 +17,7 @@ inline fun <reified T : Any> Activity.launchActivity(
     }
 }
 
-fun Activity.launchActivity(
+inline fun Activity.launchActivity(
         requestCode: Int = -1,
         options: Bundle? = null,
         className: String,
@@ -37,11 +37,11 @@ inline fun <reified T : Any> Context.launchActivity(
     startActivity(intent, options)
 }
 
-fun Context.launchActivity(
+inline fun Context.launchActivity(
         options: Bundle? = null,
-        clazz: String,
+        className: String,
         init: Intent.() -> Unit = {}) {
-    val intent = newIntent(clazz)
+    val intent = newIntent(className)
     intent.init()
     startActivity(intent, options)
 }

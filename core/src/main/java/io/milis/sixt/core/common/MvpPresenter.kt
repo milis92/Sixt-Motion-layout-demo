@@ -5,14 +5,15 @@ import java.lang.ref.WeakReference
 
 abstract class MvpPresenter<T : MvpView> {
 
-    private var view: WeakReference<T>? = null
+    private var viewReference: WeakReference<T>? = null
+    protected val view = viewReference?.get()
 
     fun  onCreate(view: T) {
-        this.view = WeakReference(view)
+        this.viewReference = WeakReference(view)
     }
 
     open fun onDestroy() {
-        view?.clear()
+        viewReference?.clear()
     }
 }
 

@@ -3,14 +3,14 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/white</item>
-        <item name="colorSecondary">@color/blue</item>
-        <item name="colorAccent">@color/blue_light</item>
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorAccent">@color/orange</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
         <item name="android:windowSharedElementsUseOverlay">false</item>
-        <item name="android:navigationBarColor">@color/blue</item>
-        <item name="android:statusBarColor">@color/blue</item>
+        <item name="android:navigationBarColor">@color/orange</item>
+        <item name="android:statusBarColor">@color/orange</item>
     </style>
 
     <style name="AppTheme.FullScreen" parent="AppTheme">
