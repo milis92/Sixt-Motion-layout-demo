@@ -15,7 +15,7 @@
             android:id="@+id/mt_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="12dp"
+            app:cardElevation="8dp"
             app:cardPreventCornerOverlap="true">
 
             <RelativeLayout

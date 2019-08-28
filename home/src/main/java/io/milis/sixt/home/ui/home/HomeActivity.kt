@@ -70,6 +70,8 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     }
 
     override fun onSearchConfirmed(text: CharSequence?) {
+        searchBar.setPlaceHolder(text)
+        presenter.onSearchConfirmed(text.toString(), text.toString())
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -80,6 +82,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
     override fun onCarsLoaded(cars: List<Car>) {
         googleMap.clear()
+        suggestionsAdapter.clearSuggestions()
         suggestionsAdapter.suggestions = cars
         searchBar.disableSearch()
 
