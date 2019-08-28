@@ -30,12 +30,6 @@ class CarsRepository @Inject constructor(private val remoteService: RemoteServic
     }
 
     @CheckReturnValue
-    fun sync(): Completable =
-            remoteService.getCars().doOnSuccess {
-                carsDao.sync(it)
-            }.ignoreElement()
-
-    @CheckReturnValue
     fun getCars(): Flowable<List<Car>> = carsDao.getAll()
 
     @CheckReturnValue
