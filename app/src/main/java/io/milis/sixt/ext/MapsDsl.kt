@@ -1,12 +1,15 @@
 package io.milis.sixt.ext
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.IdRes
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+@DslMarker
+annotation class MarkerDsl
+
+@MarkerDsl
 private interface Builder<T> {
     fun build(): T
 }

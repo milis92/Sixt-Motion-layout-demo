@@ -70,11 +70,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
                 snippet {
                     plus("")
                 }
-                drawable {
-                    resource(R.drawable.color_cursor)
-                }
             }
-
             googleMap.addMarker(marker)
         }
     }
