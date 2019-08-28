@@ -34,6 +34,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     override fun onButtonClicked(buttonCode: Int) {
         when (buttonCode) {
             MaterialSearchBar.BUTTON_NAVIGATION -> {
+                drawerLayout.openDrawer(navigation)
             }
             MaterialSearchBar.BUTTON_BACK -> {
                 searchBar.disableSearch()
