@@ -1,4 +1,4 @@
-package io.milis.core.common
+package io.milis.sixt.core.common
 
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference

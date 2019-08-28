@@ -6,9 +6,8 @@ dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
 
-    //Dagger
+    //Dagger - We cant use dagger-android bindings since dagger-android does not support multy module projects due to internal usage of multibindings
     implementation "com.google.dagger:dagger:${versions.dagger}"
-    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
     //JavaRx

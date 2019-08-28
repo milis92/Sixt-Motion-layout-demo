@@ -1,4 +1,4 @@
-package io.milis.core
+package io.milis.sixt.core
 
 import org.junit.Test
 

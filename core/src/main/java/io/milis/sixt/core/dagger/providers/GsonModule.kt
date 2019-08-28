@@ -1,4 +1,4 @@
-package io.milis.core.dagger.providers
+package io.milis.sixt.core.dagger.providers
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

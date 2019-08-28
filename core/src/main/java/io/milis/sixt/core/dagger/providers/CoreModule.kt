@@ -1,11 +1,11 @@
-package io.milis.core.dagger.providers
+package io.milis.sixt.core.dagger.providers
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import io.milis.core.BuildConfig
+import io.milis.sixt.core.BuildConfig
 
 @Module(
         includes = [

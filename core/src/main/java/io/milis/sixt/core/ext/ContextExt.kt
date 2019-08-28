@@ -1,9 +1,10 @@
-package io.milis.core.ext
+package io.milis.sixt.core.ext
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import io.milis.sixt.core.BuildConfig
 
 inline fun <reified T : Any> Activity.launchActivity(
         requestCode: Int = -1,
@@ -19,9 +20,9 @@ inline fun <reified T : Any> Activity.launchActivity(
 fun Activity.launchActivity(
         requestCode: Int = -1,
         options: Bundle? = null,
-        clazz: String,
+        className: String,
         init: Intent.() -> Unit = {}) {
-    val intent = newIntent(clazz)
+    val intent = newIntent(className)
     intent.init()
     if (!this.isFinishing) {
         startActivityForResult(intent, requestCode, options)
@@ -49,4 +50,4 @@ inline fun <reified T : Any> newIntent(context: Context): Intent =
         Intent(context, T::class.java)
 
 fun newIntent(clazz: String): Intent =
-        Intent(Intent.ACTION_VIEW).setClassName("ch.bmapp", clazz)
+        Intent(Intent.ACTION_VIEW).setClassName(BuildConfig.APPLICATION_ID, clazz)

@@ -1,15 +1,14 @@
-package ch.bmapp.core.domain.services.remote
+package io.milis.sixt.core.domain
 
 import android.content.SharedPreferences
 import android.text.TextUtils
-import io.milis.core.domain.repositories.AuthRepository.Companion.ACCESS_TOKEN
 import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.Response
 import timber.log.Timber
 import javax.inject.Inject
 
-class RequestInterceptor
+class HeadersInterceptor
 @Inject constructor(
         private val sharedPreferences: SharedPreferences,
         private val defaultHeaders: Headers
@@ -23,7 +22,7 @@ class RequestInterceptor
             if (!TextUtils.isEmpty(chain.request().header("X-Anonymous"))) {
                 return chain.proceed(request)
             } else {
-                val accessToken = sharedPreferences.getString(ACCESS_TOKEN, null)
+                val accessToken = sharedPreferences.getString("token", null)
                 if (accessToken == null) {
                     return chain.proceed(request)
                 } else {

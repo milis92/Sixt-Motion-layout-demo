@@ -1,9 +1,9 @@
-package io.milis.core.dagger.providers
+package io.milis.sixt.core.dagger.providers
 
-import io.milis.core.dagger.providers.SchedulerModule.Companion.Io
+import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Io
 import dagger.Module
 import dagger.Provides
-import io.milis.core.BuildConfig
+import io.milis.sixt.core.BuildConfig
 import io.reactivex.Scheduler
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

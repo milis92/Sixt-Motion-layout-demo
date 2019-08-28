@@ -1,4 +1,4 @@
-package io.milis.core.domain.services.local
+package io.milis.sixt.core.domain.services.local
 
 object Migrations {
 

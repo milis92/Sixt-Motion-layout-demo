@@ -1,4 +1,4 @@
-package io.milis.core.dagger.providers
+package io.milis.sixt.core.dagger.providers
 
 import dagger.Module
 import dagger.Provides

@@ -1,11 +1,9 @@
-package io.milis.core.common
+package io.milis.sixt.core.common
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
 
-abstract class MvpActivity : DaggerAppCompatActivity(), MvpView {
+abstract class MvpActivity : AppCompatActivity(), MvpView {
 
     abstract val presenter: MvpPresenter<*>
 

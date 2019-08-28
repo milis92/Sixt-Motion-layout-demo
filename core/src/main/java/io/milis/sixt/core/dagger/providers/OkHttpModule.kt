@@ -1,10 +1,9 @@
-package io.milis.core.dagger.providers
+package io.milis.sixt.core.dagger.providers
 
-import ch.bmapp.core.domain.services.remote.RequestAuthenticator
-import ch.bmapp.core.domain.services.remote.RequestInterceptor
+import io.milis.sixt.core.domain.HeadersInterceptor
 import dagger.Module
 import dagger.Provides
-import io.milis.core.BuildConfig
+import io.milis.sixt.core.BuildConfig
 import okhttp3.Headers
 import okhttp3.Headers.Companion.headersOf
 import okhttp3.OkHttpClient
@@ -33,14 +32,12 @@ internal class OkHttpModule {
     @Provides
     fun provideOkHttpClient(
             okHttpClientBuilder: OkHttpClient.Builder,
-            interceptor: HttpLoggingInterceptor,
-            authenticator: RequestAuthenticator,
-            requestInterceptor: RequestInterceptor
+            loggingInterceptor: HttpLoggingInterceptor,
+            requestInterceptor: HeadersInterceptor
     ): OkHttpClient =
             okHttpClientBuilder.apply {
-                authenticator(authenticator)
                 addInterceptor(requestInterceptor)
-                addInterceptor(interceptor)
+                addInterceptor(loggingInterceptor)
             }.build()
 
     @Provides
