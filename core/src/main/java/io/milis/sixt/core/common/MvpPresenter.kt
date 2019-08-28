@@ -6,9 +6,10 @@ import java.lang.ref.WeakReference
 abstract class MvpPresenter<T : MvpView> {
 
     private var viewReference: WeakReference<T>? = null
-    protected val view = viewReference?.get()
+    protected val view
+        get() = viewReference?.get()
 
-    fun  onCreate(view: T) {
+    fun onCreate(view: T) {
         this.viewReference = WeakReference(view)
     }
 

@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="io.milis.sixt.home">
+
+    <dist:module
+        dist:instant="false"
+        dist:onDemand="false"
+        dist:title="Auth">
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Home"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+</manifest>

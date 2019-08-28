@@ -49,6 +49,8 @@ android {
             dimension "configuration"
         }
     }
+
+    dynamicFeatures = [':home']
 }
 
 dependencies {
