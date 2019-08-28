@@ -1,6 +1,5 @@
 package io.milis.sixt.ui.splash
 
-import ch.bmapp.ui.splash.SplashModule
 import dagger.Component
 import io.milis.sixt.core.dagger.BaseActivityComponent
 import io.milis.sixt.core.dagger.CoreComponent
@@ -19,4 +18,8 @@ internal abstract class SplashComponent : BaseActivityComponent<SplashActivity> 
     interface Factory {
         fun create(coreComponent: CoreComponent): SplashComponent
     }
+}
+
+fun inject() {
+
 }

@@ -2,6 +2,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+kapt {
+    javacOptions {
+        option("-Adagger.fastInit=enabled")
+        option("-Adagger.formatGeneratedSource=disabled")
+    }
+}
+
 dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"

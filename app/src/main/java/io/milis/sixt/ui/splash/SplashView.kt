@@ -1,4 +1,4 @@
-package ch.bmapp.ui.splash
+package io.milis.sixt.ui.splash
 
 import io.milis.sixt.core.common.MvpView
 

@@ -3,7 +3,7 @@ package io.milis.sixt.core.common
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
-abstract class MvpPresenter<in T : MvpView> {
+abstract class MvpPresenter<T : MvpView> {
 
     private var view: WeakReference<T>? = null
 
