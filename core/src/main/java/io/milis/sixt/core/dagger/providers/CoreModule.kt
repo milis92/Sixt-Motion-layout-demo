@@ -3,6 +3,7 @@ package io.milis.sixt.core.dagger.providers
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.work.WorkManager
 import dagger.Module
 import dagger.Provides
 import io.milis.sixt.core.BuildConfig
@@ -23,5 +24,8 @@ internal class CoreModule {
     @Provides
     fun provideSharedPreferences(application: Application): SharedPreferences =
             application.getSharedPreferences(BuildConfig.LIBRARY_PACKAGE_NAME, Context.MODE_PRIVATE)
+
+    @Provides
+    fun provideWorkManager(application: Application): WorkManager = WorkManager.getInstance(application)
 
 }
