@@ -22,6 +22,12 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="AppTheme.FullScreen.Translucent" parent="AppTheme.FullScreen">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
     <style name="AppTheme.Splash" parent="AppTheme.FullScreen">
         <item name="android:background">@drawable/splash_background</item>
     </style>

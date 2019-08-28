@@ -6,7 +6,7 @@
     <dist:module
         dist:instant="false"
         dist:onDemand="false"
-        dist:title="Auth">
+        dist:title="Home">
         <dist:fusing dist:include="true" />
     </dist:module>
 
