@@ -1,10 +1,12 @@
 package io.milis.sixt.core.domain.services.entities
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 @Entity(
         tableName = "cars",
@@ -14,6 +16,7 @@ import com.google.gson.annotations.SerializedName
             ])
         ]
 )
+@Parcelize
 data class Car(
 
         @PrimaryKey
@@ -63,4 +66,4 @@ data class Car(
 
         @ColumnInfo(name = "car_image_url")
         @SerializedName("carImageUrl") val carImageUrl: String
-)
+) : Parcelable
