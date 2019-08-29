@@ -39,5 +39,6 @@ dependencies {
     implementation project(':app')
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
     implementation "com.github.mancj:MaterialSearchBar:0.8.2"
 }

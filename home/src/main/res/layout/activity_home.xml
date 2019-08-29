@@ -7,41 +7,39 @@
     android:layout_height="match_parent"
     tools:theme="@style/AppTheme.Home">
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/motionLayout"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:applyMotionScene="true"
-        app:layoutDescription="@xml/home_scene"
-        app:showPaths="false">
+        android:layout_height="match_parent">
 
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.mancj.materialsearchbar.MaterialSearchBar
-            android:id="@+id/searchBar"
-            style="@style/MaterialSearchBarLight"
+        <io.milis.sixt.home.util.SingleViewTouchableMotionLayout
+            android:id="@+id/motionLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:mt_hint="@string/home_search_hint"
-            app:mt_maxSuggestionsCount="5"
-            app:mt_navIconEnabled="true"
-            app:mt_roundedSearchBarEnabled="true"
-            app:mt_speechMode="true" />
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/home_scene"
+            app:showPaths="false">
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+            <include layout="@layout/layout_home_details" />
+
+        </io.milis.sixt.home.util.SingleViewTouchableMotionLayout>
+    </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/menu_home"
-        app:headerLayout="@layout/layout_home_header" />
+        app:headerLayout="@layout/layout_home_header"
+        app:menu="@menu/menu_home" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

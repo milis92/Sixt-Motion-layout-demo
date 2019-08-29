@@ -1,9 +1,6 @@
 package io.milis.sixt.home.ui.home
 
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,6 +14,7 @@ import io.milis.sixt.ext.location
 import io.milis.sixt.ext.marker
 import io.milis.sixt.home.R
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.layout_home_details.*
 import kotlinx.android.synthetic.main.material_searchbar.view.*
 import javax.inject.Inject
 
@@ -49,6 +47,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
             }
         }
 
+
         (map as SupportMapFragment).getMapAsync(this)
     }
 
@@ -74,11 +73,12 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
-        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json));
+
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json))
+        googleMap.setOnMarkerClickListener {
+            true
+        }
         presenter.onMapCreated()
-
-        motionLayout.transitionToEnd()
-
     }
 
     override fun onCarsLoaded(cars: List<Car>) {
