@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">sixt</string>
+    <string name="app_name">Sixt</string>
+    <string name="shorcut_disabled">Disabled</string>
+    <string name="shorcut_map_long_lbl">Find vehicles</string>
+    <string name="shorcut_map_short_lbl">Map</string>
 </resources>

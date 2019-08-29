@@ -1,0 +1,18 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <shortcut
+        android:shortcutId="map"
+        android:enabled="true"
+        android:icon="@drawable/ic_map_black_24dp"
+        android:shortcutDisabledMessage="@string/shorcut_disabled"
+        android:shortcutLongLabel="@string/shorcut_map_long_lbl"
+        android:shortcutShortLabel="@string/shorcut_map_short_lbl"
+        tools:ignore="UnusedAttribute">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="io.milis.sixt.home.ui.home.HomeActivity"
+            android:targetPackage="io.milis.sixt" />
+    </shortcut>
+
+</shortcuts>

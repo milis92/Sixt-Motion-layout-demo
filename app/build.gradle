@@ -49,9 +49,14 @@ android {
             dimension "configuration"
         }
     }
+
+    dynamicFeatures = [':home']
 }
 
 dependencies {
     //We want to expose this aar as transitive dependency
     api project(":core")
+    api "com.google.android.gms:play-services-maps:${versions.maps}"
+    implementation "androidx.work:work-runtime:${versions.workManager}"
+
 }

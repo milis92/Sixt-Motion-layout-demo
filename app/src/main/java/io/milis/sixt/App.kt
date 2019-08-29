@@ -2,17 +2,21 @@ package io.milis.sixt
 
 import android.app.Application
 import android.content.Context
+import androidx.work.Configuration
+import androidx.work.WorkManager
 import io.milis.sixt.core.dagger.CoreComponent
 import io.milis.sixt.core.dagger.DaggerCoreComponent
 
 class App : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-    }
-
     private val coreComponent: CoreComponent by lazy {
-        DaggerCoreComponent.factory().create(this)
+        val component = DaggerCoreComponent.factory().create(this)
+
+        WorkManager.initialize(this,
+                Configuration.Builder()
+                        .setWorkerFactory(component.workerFactory())
+                        .build())
+        component
     }
 
     companion object {

@@ -1,0 +1,3 @@
+<resources>
+    <style name="AppTheme.Home" parent="AppTheme.FullScreen.Translucent" />
+</resources>

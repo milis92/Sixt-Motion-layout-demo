@@ -6,9 +6,12 @@ import android.app.Service
 import android.content.SharedPreferences
 import dagger.BindsInstance
 import dagger.Component
+import io.milis.sixt.core.common.worker.SixtWorkerFactory
+import io.milis.sixt.core.common.worker.WorkerProvider
 import io.milis.sixt.core.dagger.providers.CoreModule
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Io
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Main
+import io.milis.sixt.core.domain.repositories.CarsRepository
 import io.reactivex.Scheduler
 import javax.inject.Named
 
@@ -24,6 +27,10 @@ abstract class CoreComponent : BaseComponent<Application> {
 
     @Named(Main)
     abstract fun schedulerMain(): Scheduler
+
+    abstract fun carsRepository() : CarsRepository
+
+    abstract fun workerFactory() : SixtWorkerFactory
 
     abstract fun sharedPreferences(): SharedPreferences
 
