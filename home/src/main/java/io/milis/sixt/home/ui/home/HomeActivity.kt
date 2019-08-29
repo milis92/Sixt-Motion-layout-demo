@@ -35,8 +35,6 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
         setContentView(R.layout.activity_home)
         inject()
 
-        motionLayout.transitionToEnd()
-
         with(searchBar) {
             setPlaceHolder(getString(R.string.home_search_placeholder))
             setOnSearchActionListener(this@HomeActivity)
@@ -78,6 +76,9 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
         this.googleMap = googleMap
         googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json));
         presenter.onMapCreated()
+
+        motionLayout.transitionToEnd()
+
     }
 
     override fun onCarsLoaded(cars: List<Car>) {

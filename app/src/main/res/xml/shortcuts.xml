@@ -11,7 +11,7 @@
         tools:ignore="UnusedAttribute">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="io.plaidapp.search.ui.SearchActivity"
+            android:targetClass="io.milis.sixt.home.ui.home.HomeActivity"
             android:targetPackage="io.milis.sixt" />
     </shortcut>
 
