@@ -7,10 +7,11 @@ import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mancj.materialsearchbar.adapter.SuggestionsAdapter
 import io.milis.sixt.core.domain.services.entities.Car
 import io.milis.sixt.home.R
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -36,6 +37,10 @@ internal class CarsSuggestionAdapter @Inject constructor(inflater: LayoutInflate
             itemView.setOnClickListener {
                 onItemSelected.invoke(suggestion)
             }
+            Glide.with(holder.itemView)
+                    .load(suggestion.carImageUrl)
+                    .error(R.drawable.ic_car_fallback)
+                    .into(image)
         }
     }
 

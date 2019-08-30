@@ -1,16 +1,20 @@
 package io.milis.sixt.home.ui.home
 
 import android.os.Bundle
-import com.google.android.gms.maps.CameraUpdateFactory
+import android.transition.Transition
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.request.target.Target
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.mancj.materialsearchbar.MaterialSearchBar
+import io.milis.sixt.GlideApp
 import io.milis.sixt.core.common.mvp.MvpActivity
 import io.milis.sixt.core.domain.services.entities.Car
 import io.milis.sixt.ext.afterTextChanged
-import io.milis.sixt.ext.location
+import io.milis.sixt.ext.withDividers
 import io.milis.sixt.ext.marker
 import io.milis.sixt.home.R
 import kotlinx.android.synthetic.main.activity_home.*
@@ -23,6 +27,9 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
     @Inject
     internal lateinit var suggestionsAdapter: CarsSuggestionAdapter
+
+    @Inject
+    internal lateinit var detailsAdapter: HomeDetailsAdapter
 
     override val presenter by presenterProvider(HomePresenter::class.java, this)
 
@@ -37,16 +44,23 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
             setPlaceHolder(getString(R.string.home_search_placeholder))
             setOnSearchActionListener(this@HomeActivity)
             setCustomSuggestionAdapter(suggestionsAdapter)
-            isSearchEnabled
             afterTextChanged {
                 suggestionsAdapter.filter.filter(it)
             }
             suggestionsAdapter.onItemSelected = {
                 setPlaceHolder(it.make)
                 presenter.onSearchConfirmed(it.make, it.modelName)
+                searchBar.hideSuggestionsList()
+                searchBar.disableSearch()
             }
         }
 
+        with(recyclerView) {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            withDividers()
+            adapter = detailsAdapter
+            isNestedScrollingEnabled = false
+        }
 
         (map as SupportMapFragment).getMapAsync(this)
     }
@@ -69,6 +83,16 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     override fun onSearchConfirmed(text: CharSequence?) {
         searchBar.setPlaceHolder(text)
         presenter.onSearchConfirmed(text.toString(), text.toString())
+        searchBar.hideSuggestionsList()
+        searchBar.disableSearch()
+    }
+
+    override fun onBackPressed() {
+        if (motionLayout.progress == 1f) {
+            motionLayout.transitionToStart()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -76,6 +100,10 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
         googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json))
         googleMap.setOnMarkerClickListener {
+            val car: Car = it.tag as Car
+
+            fillDetails(car)
+
             true
         }
         presenter.onMapCreated()
@@ -83,9 +111,10 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
     override fun onCarsLoaded(cars: List<Car>) {
         googleMap.clear()
-        suggestionsAdapter.clearSuggestions()
-        suggestionsAdapter.suggestions = cars
-        searchBar.disableSearch()
+
+        if (suggestionsAdapter.itemCount == 0) {
+            suggestionsAdapter.suggestions = cars
+        }
 
         cars.forEachIndexed { index, car ->
             val marker = marker {
@@ -96,17 +125,27 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
                 name { "asdf" }
                 snippet { "" }
             }
-            googleMap.addMarker(marker)
+
+            googleMap.addMarker(marker).apply {
+                tag = car
+            }
+
             if (index == 0) {
-                googleMap.animateCamera(
-                        CameraUpdateFactory.newLatLngZoom(
-                                location {
-                                    latitude { car.latitude }
-                                    longitude { car.longitude }
-                                }, 10f))
+                fillDetails(car)
             }
         }
+    }
 
+    private fun fillDetails(car: Car) {
+        GlideApp.with(this)
+                .load(car.carImageUrl)
+                .error(R.drawable.ic_car_fallback)
+                .override(motionLayout.width, Target.SIZE_ORIGINAL)
+                .into(topImage)
+
+        detailsAdapter.submitItem(car)
+        make.text = car.make
+        modelName.text = car.modelName
     }
 
     private fun MaterialSearchBar.afterTextChanged(afterTextChanged: (String) -> Unit) {

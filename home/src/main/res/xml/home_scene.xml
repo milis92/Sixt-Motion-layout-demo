@@ -1,143 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@+id/start"
+        android:id="@+id/enter"
+        motion:constraintSetEnd="@+id/baseEnd"
+        motion:constraintSetStart="@+id/baseStart"
         motion:duration="600"
-        motion:interpolator="linear">
+        motion:motionInterpolator="linear">
 
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:touchAnchorId="@+id/topImageContainer"
-            motion:touchAnchorSide="top" />
-
-        <ConstraintSet android:id="@+id/start">
-
-            <Constraint
-                android:id="@+id/searchBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toTopOf="parent" />
-
-            <Constraint
-                android:id="@+id/topImageContainer"
-                android:layout_width="0dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent" />
-
-            <Constraint
-                android:id="@+id/topImage"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                motion:layout_constraintBottom_toBottomOf="@+id/topImageContainer"
-                motion:layout_constraintDimensionRatio="H,1:2.5"
-                motion:layout_constraintStart_toStartOf="@+id/topImageContainer"
-                motion:layout_constraintTop_toTopOf="@+id/topImageContainer" />
-
-            <Constraint
-                android:id="@+id/recyclerViewContainer"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toBottomOf="@+id/topImageContainer" />
-
-            <Constraint
-                android:id="@+id/recyclerView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:alpha="0"
-                motion:layout_constraintBottom_toBottomOf="@+id/topImageContainer"
-                motion:layout_constraintEnd_toEndOf="@+id/topImageContainer"
-                motion:layout_constraintStart_toStartOf="@+id/topImageContainer"
-                motion:layout_constraintTop_toBottomOf="@+id/topImageContainer" />
-        </ConstraintSet>
-
-        <ConstraintSet android:id="@+id/end">
-            <Constraint
-                android:id="@+id/searchBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                motion:layout_constraintBottom_toTopOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent" />
-
-            <Constraint
-                android:id="@+id/topImageContainer"
-                android:layout_width="0dp"
-                android:layout_height="320dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent" />
-
-            <Constraint
-                android:id="@+id/topImage"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                motion:layout_constraintBottom_toBottomOf="@+id/topImageContainer"
-                motion:layout_constraintEnd_toEndOf="@+id/topImageContainer"
-                motion:layout_constraintStart_toStartOf="@+id/topImageContainer"
-                motion:layout_constraintTop_toTopOf="@+id/topImageContainer" />
-
-            <Constraint
-                android:id="@+id/recyclerViewContainer"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toBottomOf="@+id/topImageContainer" />
-
-            <Constraint
-                android:id="@+id/recyclerView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintTop_toBottomOf="@+id/topImageContainer" />
-        </ConstraintSet>
+            motion:dragScale="1.4"
+            motion:onTouchUp="autoComplete"
+            motion:touchAnchorId="@id/topImageContainer"
+            motion:touchAnchorSide="top"
+            motion:touchRegionId="@id/topImageContainer" />
 
         <KeyFrameSet>
-            <KeyPosition
-                motion:curveFit="linear"
-                motion:framePosition="90"
-                motion:percentX="0"
-                motion:percentY="0"
-                motion:target="@+id/topImage" />
 
             <KeyPosition
                 motion:curveFit="linear"
-                motion:framePosition="90"
-                motion:percentY="0"
-                motion:target="@+id/topImageContainer" />
+                motion:framePosition="10"
+                motion:motionTarget="@+id/topImage"
+                motion:percentHeight="0"
+                motion:percentWidth="0"
+                motion:percentX="0" />
 
             <KeyPosition
                 motion:curveFit="linear"
-                motion:framePosition="90"
-                motion:percentY="0"
-                motion:target="@+id/recyclerViewContainer" />
+                motion:framePosition="10"
+                motion:motionTarget="@+id/topImageContainer"
+                motion:percentWidth="0" />
+
+            <KeyPosition
+                motion:curveFit="linear"
+                motion:framePosition="10"
+                motion:motionTarget="@+id/recyclerViewContainer"
+                motion:percentWidth="0" />
 
             <KeyAttribute
                 android:alpha="0"
-                motion:framePosition="75"
-                motion:target="@+id/recyclerView" />
+                motion:framePosition="25"
+                motion:motionTarget="@id/recyclerView" />
         </KeyFrameSet>
     </Transition>
+
+    <ConstraintSet android:id="@+id/baseStart">
+        <Constraint
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/topImageContainer"
+            android:layout_width="0dp"
+            android:layout_height="78dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="8dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/topImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:elevation="8dp"
+            motion:layout_constraintBottom_toBottomOf="@id/topImageContainer"
+            motion:layout_constraintDimensionRatio="H,1:1.5"
+            motion:layout_constraintStart_toStartOf="@id/topImageContainer"
+            motion:layout_constraintTop_toTopOf="@id/topImageContainer" />
+
+        <Constraint
+            android:id="@id/titleHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            motion:layout_constraintStart_toEndOf="@id/topImage"
+            motion:layout_constraintTop_toTopOf="@id/topImage" />
+
+        <Constraint
+            android:id="@+id/directions"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:elevation="8dp"
+            motion:layout_constraintBottom_toBottomOf="@id/titleHolder"
+            motion:layout_constraintEnd_toEndOf="@+id/topImageContainer"
+            motion:layout_constraintHorizontal_bias="1"
+            motion:layout_constraintStart_toEndOf="@id/titleHolder"
+            motion:layout_constraintTop_toTopOf="@id/topImageContainer" />
+
+        <Constraint
+            android:id="@id/recyclerViewContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:elevation="8dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/topImageContainer" />
+
+        <Constraint
+            android:id="@id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            android:elevation="8dp"
+            motion:layout_constraintBottom_toBottomOf="@id/topImageContainer"
+            motion:layout_constraintEnd_toEndOf="@id/topImageContainer"
+            motion:layout_constraintStart_toStartOf="@id/topImageContainer"
+            motion:layout_constraintTop_toBottomOf="@id/topImageContainer" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/baseEnd">
+        <Constraint
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/topImageContainer"
+            android:layout_width="0dp"
+            android:layout_height="320dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/topImage"
+            android_padding="16dp"
+            android:layout_width="0dp"
+            android:layout_height="320dp"
+            motion:layout_constraintBottom_toBottomOf="@id/topImageContainer"
+            motion:layout_constraintDimensionRatio="H,1:1.5"
+            motion:layout_constraintEnd_toEndOf="@id/topImageContainer"
+            motion:layout_constraintStart_toStartOf="@id/topImageContainer"
+            motion:layout_constraintTop_toTopOf="@id/topImageContainer" />
+
+        <Constraint
+            android:id="@id/titleHolder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="@id/topImageContainer"
+            motion:layout_constraintTop_toBottomOf="@id/topImage"
+            motion:layout_constraintWidth_default="percent"
+            motion:layout_constraintWidth_percent="0.5" />
+
+        <Constraint
+            android:id="@+id/directions"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            motion:layout_constraintBottom_toBottomOf="@id/titleHolder"
+            motion:layout_constraintEnd_toEndOf="@id/topImageContainer"
+            motion:layout_constraintStart_toEndOf="@id/titleHolder"
+            motion:layout_constraintTop_toTopOf="@id/titleHolder" />
+
+        <Constraint
+            android:id="@id/recyclerViewContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/topImageContainer" />
+
+        <Constraint
+            android:id="@id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/topImageContainer" />
+    </ConstraintSet>
 
 </MotionScene>

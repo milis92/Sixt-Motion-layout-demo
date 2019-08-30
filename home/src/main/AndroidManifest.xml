@@ -18,6 +18,7 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Home" />
     </application>
