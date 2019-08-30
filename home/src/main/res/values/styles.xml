@@ -1,3 +1,21 @@
 <resources>
-    <style name="AppTheme.Home" parent="AppTheme.FullScreen.Translucent" />
+
+    <style name="AppTheme.Home" parent="AppTheme.FullScreen.Translucent">
+        <item name="android:windowBackground">@color/grayDark</item>
+    </style>
+
+    <style name="SearchView" parent="MaterialSearchBarDark">
+        <item name="mt_searchBarColor">@color/grayDark</item>
+        <item name="mt_dividerColor">@color/orange</item>
+        <item name="mt_navIconTint">@color/orange</item>
+        <item name="mt_searchIconTint">@color/orange</item>
+        <item name="mt_clearIconTint">@color/orange</item>
+        <item name="mt_menuIconTint">@color/orange</item>
+        <item name="mt_backIconTint">@color/orange</item>
+        <item name="mt_textCursorTint">@color/orange</item>
+        <item name="mt_textColor">@color/white</item>
+        <item name="mt_hintColor">@color/gray</item>
+        <item name="mt_placeholderColor">@color/searchBarPlaceholderColorDark</item>
+        <item name="mt_highlightedTextColor">@color/orange</item>
+    </style>
 </resources>

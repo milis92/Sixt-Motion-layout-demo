@@ -3,4 +3,5 @@
     <string name="home_search_placeholder">Find cars</string>
     <string name="home_search_hint">Try Bmw, Mini</string>
     <string name="home_navigation_list">All vehicles</string>
+    <string name="home_details_direction">directions</string>
 </resources>

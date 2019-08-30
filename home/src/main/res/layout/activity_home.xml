@@ -7,9 +7,13 @@
     android:layout_height="match_parent"
     tools:theme="@style/AppTheme.Home">
 
-    <FrameLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:currentState="@id/end"
+        app:layoutDescription="@xml/home_scene"
+        app:showPaths="false">
 
         <fragment
             android:id="@+id/map"
@@ -21,24 +25,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <io.milis.sixt.home.util.SingleViewTouchableMotionLayout
-            android:id="@+id/motionLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutDescription="@xml/home_scene"
-            app:showPaths="false">
+        <include layout="@layout/layout_home_details" />
 
-            <include layout="@layout/layout_home_details" />
-
-        </io.milis.sixt.home.util.SingleViewTouchableMotionLayout>
-    </FrameLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="?android:attr/windowBackground"
         app:headerLayout="@layout/layout_home_header"
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/orange"
         app:menu="@menu/menu_home" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

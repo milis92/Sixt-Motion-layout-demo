@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mancj.materialsearchbar.adapter.SuggestionsAdapter
 import io.milis.sixt.core.domain.services.entities.Car
 import io.milis.sixt.home.R
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 

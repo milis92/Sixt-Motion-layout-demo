@@ -6,7 +6,7 @@
 
     <com.mancj.materialsearchbar.MaterialSearchBar
         android:id="@+id/searchBar"
-        style="@style/MaterialSearchBarLight"
+        style="@style/SearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
@@ -19,13 +19,13 @@
         app:mt_roundedSearchBarEnabled="true"
         app:mt_speechMode="true" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@id/topImageContainer"
+    <View
+        android:id="@+id/topImageContainer"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:background="?android:attr/windowBackground"
-        android:elevation="8dp"
         app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,21 +34,19 @@
         android:id="@+id/topImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="8dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@id/topImageContainer"
-        app:layout_constraintEnd_toEndOf="@id/topImageContainer"
-        app:layout_constraintStart_toStartOf="@id/topImageContainer"
-        app:layout_constraintTop_toTopOf="@id/topImageContainer"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/topImageContainer"
+        app:layout_constraintEnd_toEndOf="@+id/topImageContainer"
+        app:layout_constraintStart_toStartOf="@+id/topImageContainer"
+        app:layout_constraintTop_toTopOf="@+id/topImageContainer"
         tools:ignore="ContentDescription"
         tools:src="@tools:sample/avatars" />
 
-    <FrameLayout
+    <View
         android:id="@+id/recyclerViewContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="?android:attr/windowBackground"
-        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,10 +56,78 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topImageContainer" />
+
+    <LinearLayout
+        android:id="@+id/titleHolder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toStartOf="@id/directions"
+        app:layout_constraintStart_toEndOf="@id/topImage"
+        app:layout_constraintTop_toTopOf="@id/topImage">
+
+        <TextView
+            android:id="@+id/make"
+            style="@style/TextView.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="BMW" />
+
+        <TextView
+            android:id="@+id/modelName"
+            style="@style/TextView.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="MINI" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_clean_black_24dp" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:numStars="5"
+                android:rating="4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <io.milis.sixt.util.ExpandableFab
+        android:id="@+id/directions"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/orange"
+        app:layout_constraintBottom_toBottomOf="@id/titleHolder"
+        app:layout_constraintEnd_toEndOf="@+id/titleHolder"
+        app:layout_constraintTop_toTopOf="@id/titleHolder">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_directions_black_24dp" />
+    </io.milis.sixt.util.ExpandableFab>
 
 </merge>
