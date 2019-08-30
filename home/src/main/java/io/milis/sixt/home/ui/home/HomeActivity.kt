@@ -1,20 +1,20 @@
 package io.milis.sixt.home.ui.home
 
 import android.os.Bundle
+import android.transition.Transition
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.request.target.Target
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mancj.materialsearchbar.MaterialSearchBar
 import io.milis.sixt.GlideApp
 import io.milis.sixt.core.common.mvp.MvpActivity
 import io.milis.sixt.core.domain.services.entities.Car
 import io.milis.sixt.ext.afterTextChanged
-import io.milis.sixt.ext.location
+import io.milis.sixt.ext.withDividers
 import io.milis.sixt.ext.marker
 import io.milis.sixt.home.R
 import kotlinx.android.synthetic.main.activity_home.*
@@ -27,6 +27,9 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
     @Inject
     internal lateinit var suggestionsAdapter: CarsSuggestionAdapter
+
+    @Inject
+    internal lateinit var detailsAdapter: HomeDetailsAdapter
 
     override val presenter by presenterProvider(HomePresenter::class.java, this)
 
@@ -48,6 +51,13 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
                 setPlaceHolder(it.make)
                 presenter.onSearchConfirmed(it.make, it.modelName)
             }
+        }
+
+        with(recyclerView) {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            withDividers()
+            adapter = detailsAdapter
+            isNestedScrollingEnabled = false
         }
 
         (map as SupportMapFragment).getMapAsync(this)
@@ -128,6 +138,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
                 .override(motionLayout.width, Target.SIZE_ORIGINAL)
                 .into(topImage)
 
+        detailsAdapter.submitItem(car)
         make.text = car.make
         modelName.text = car.modelName
     }

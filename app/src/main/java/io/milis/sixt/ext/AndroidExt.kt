@@ -3,6 +3,11 @@ package io.milis.sixt.ext
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
+import io.milis.sixt.R
 
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
@@ -16,4 +21,10 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
             afterTextChanged.invoke(editable.toString())
         }
     })
+}
+
+fun RecyclerView.withDividers(@DrawableRes drawable: Int = R.drawable.ic_divider) {
+    val itemDecorator = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
+    itemDecorator.setDrawable(ContextCompat.getDrawable(this.context, drawable)!!)
+    this.addItemDecoration(itemDecorator)
 }

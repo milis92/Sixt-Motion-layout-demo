@@ -11,7 +11,7 @@
         android:id="@+id/motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:currentState="@id/end"
+        app:currentState="@id/baseEnd"
         app:layoutDescription="@xml/home_scene"
         app:showPaths="false">
 
