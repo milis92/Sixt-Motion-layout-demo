@@ -1,7 +1,10 @@
 package io.milis.sixt.ext
 
+import android.app.Activity
+import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -27,4 +30,9 @@ fun RecyclerView.withDividers(@DrawableRes drawable: Int = R.drawable.ic_divider
     val itemDecorator = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
     itemDecorator.setDrawable(ContextCompat.getDrawable(this.context, drawable)!!)
     this.addItemDecoration(itemDecorator)
+}
+
+fun Activity.hideKeyboard() {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(this.window.decorView.windowToken, 0)
 }

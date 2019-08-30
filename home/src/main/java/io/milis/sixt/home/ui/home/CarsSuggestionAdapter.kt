@@ -37,7 +37,10 @@ internal class CarsSuggestionAdapter @Inject constructor(inflater: LayoutInflate
             itemView.setOnClickListener {
                 onItemSelected.invoke(suggestion)
             }
-            Glide.with(holder.itemView).load(suggestion.carImageUrl).into(image)
+            Glide.with(holder.itemView)
+                    .load(suggestion.carImageUrl)
+                    .error(R.drawable.ic_car_fallback)
+                    .into(image)
         }
     }
 

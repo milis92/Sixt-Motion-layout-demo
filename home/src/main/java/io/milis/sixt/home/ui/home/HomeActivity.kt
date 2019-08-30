@@ -50,6 +50,8 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
             suggestionsAdapter.onItemSelected = {
                 setPlaceHolder(it.make)
                 presenter.onSearchConfirmed(it.make, it.modelName)
+                searchBar.hideSuggestionsList()
+                searchBar.disableSearch()
             }
         }
 
@@ -81,6 +83,8 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     override fun onSearchConfirmed(text: CharSequence?) {
         searchBar.setPlaceHolder(text)
         presenter.onSearchConfirmed(text.toString(), text.toString())
+        searchBar.hideSuggestionsList()
+        searchBar.disableSearch()
     }
 
     override fun onBackPressed() {
@@ -107,10 +111,10 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
 
     override fun onCarsLoaded(cars: List<Car>) {
         googleMap.clear()
-        suggestionsAdapter.clearSuggestions()
-        suggestionsAdapter.suggestions = cars
-        searchBar.hideSuggestionsList()
-        searchBar.disableSearch()
+
+        if (suggestionsAdapter.itemCount == 0) {
+            suggestionsAdapter.suggestions = cars
+        }
 
         cars.forEachIndexed { index, car ->
             val marker = marker {
@@ -135,6 +139,7 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     private fun fillDetails(car: Car) {
         GlideApp.with(this)
                 .load(car.carImageUrl)
+                .error(R.drawable.ic_car_fallback)
                 .override(motionLayout.width, Target.SIZE_ORIGINAL)
                 .into(topImage)
 
