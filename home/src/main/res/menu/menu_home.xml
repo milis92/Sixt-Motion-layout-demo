@@ -3,6 +3,7 @@
 
     <group>
         <item
+            android:id="@+id/allVehicles"
             android:icon="@drawable/ic_view_list_black_24dp"
             android:title="@string/home_navigation_list" />
     </group>

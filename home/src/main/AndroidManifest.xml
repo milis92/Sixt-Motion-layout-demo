@@ -14,13 +14,21 @@
     </dist:module>
 
     <application tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Home" />
+            android:theme="@style/BaseTheme.Home"
+            android:windowSoftInputMode="adjustNothing" />
+
+        <activity
+            android:name=".ui.all_cars.AllCarsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseTheme" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

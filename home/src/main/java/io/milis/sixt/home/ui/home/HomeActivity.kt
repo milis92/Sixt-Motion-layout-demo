@@ -14,9 +14,11 @@ import io.milis.sixt.GlideApp
 import io.milis.sixt.core.common.mvp.MvpActivity
 import io.milis.sixt.core.domain.services.entities.Car
 import io.milis.sixt.ext.afterTextChanged
+import io.milis.sixt.ext.launchActivity
 import io.milis.sixt.ext.withDividers
 import io.milis.sixt.ext.marker
 import io.milis.sixt.home.R
+import io.milis.sixt.home.ui.all_cars.AllCarsActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_home_details.*
 import kotlinx.android.synthetic.main.material_searchbar.view.*
@@ -63,6 +65,13 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
         }
 
         (map as SupportMapFragment).getMapAsync(this)
+
+        navigation.setNavigationItemSelectedListener {
+            if (it.itemId == R.id.allVehicles) {
+                launchActivity<AllCarsActivity> {  }
+            }
+            true
+        }
     }
 
     override fun onButtonClicked(buttonCode: Int) {
