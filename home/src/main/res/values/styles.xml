@@ -1,7 +1,9 @@
 <resources>
 
-    <style name="AppTheme.Home" parent="AppTheme.FullScreen.Translucent">
-        <item name="android:windowBackground">@color/grayDark</item>
+    <style name="BaseTheme.Home" parent="BaseTheme.FullScreen.Translucent" />
+
+    <style name="BaseTheme.AllCars" parent="BaseTheme">
+
     </style>
 
     <style name="SearchView" parent="MaterialSearchBarDark">

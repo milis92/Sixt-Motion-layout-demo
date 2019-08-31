@@ -8,4 +8,5 @@
     <string name="home_details_item_fuel">Fuel type</string>
     <string name="home_details_item_licence">Licence plate</string>
     <string name="home_details_item_transmission">Transmission</string>
+    <string name="all_cars_title">All cars</string>
 </resources>
