@@ -17,31 +17,41 @@
             motion:touchRegionId="@id/topImageContainer" />
 
         <KeyFrameSet>
+            <KeyFrameSet>
 
-            <KeyPosition
-                motion:curveFit="linear"
-                motion:framePosition="10"
-                motion:motionTarget="@+id/topImage"
-                motion:percentHeight="0"
-                motion:percentWidth="0"
-                motion:percentX="0" />
+                <KeyPosition
+                    motion:curveFit="linear"
+                    motion:framePosition="30"
+                    motion:motionTarget="@+id/topImage"
+                    motion:percentHeight="0"
+                    motion:percentWidth="0"
+                    motion:percentX="0" />
 
-            <KeyPosition
-                motion:curveFit="linear"
-                motion:framePosition="10"
-                motion:motionTarget="@+id/topImageContainer"
-                motion:percentWidth="0" />
+                <KeyPosition
+                    motion:curveFit="linear"
+                    motion:framePosition="30"
+                    motion:motionTarget="@+id/titleHolder"
+                    motion:percentHeight="0"
+                    motion:percentWidth="0"
+                    motion:percentX="0" />
 
-            <KeyPosition
-                motion:curveFit="linear"
-                motion:framePosition="10"
-                motion:motionTarget="@+id/recyclerViewContainer"
-                motion:percentWidth="0" />
+                <KeyPosition
+                    motion:curveFit="linear"
+                    motion:framePosition="10"
+                    motion:motionTarget="@+id/topImageContainer"
+                    motion:percentWidth="0" />
 
-            <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="25"
-                motion:motionTarget="@id/recyclerView" />
+                <KeyPosition
+                    motion:curveFit="linear"
+                    motion:framePosition="10"
+                    motion:motionTarget="@+id/recyclerViewContainer"
+                    motion:percentWidth="0" />
+
+                <KeyAttribute
+                    android:alpha="0"
+                    motion:framePosition="25"
+                    motion:motionTarget="@id/recyclerView" />
+            </KeyFrameSet>
         </KeyFrameSet>
     </Transition>
 
