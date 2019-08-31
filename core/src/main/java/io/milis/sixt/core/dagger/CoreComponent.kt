@@ -11,10 +11,13 @@ import io.milis.sixt.core.common.worker.WorkerProvider
 import io.milis.sixt.core.dagger.providers.CoreModule
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Io
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Main
+import io.milis.sixt.core.dagger.scopes.ApplicationScope
 import io.milis.sixt.core.domain.repositories.CarsRepository
 import io.reactivex.Scheduler
 import javax.inject.Named
+import javax.inject.Singleton
 
+@ApplicationScope
 @Component(
         modules = [
             CoreModule::class

@@ -20,7 +20,7 @@ class SixtWorkerFactory
     ): ListenableWorker {
         val foundEntry = workerFactories.entries.find { Class.forName(workerClassName).isAssignableFrom(it.key) }
         val factoryProvider = foundEntry?.value
-                ?: throw IllegalArgumentException("unknown worker class name: $workerClassName")
+                ?: throw IllegalArgumentException("Unknown presenter class: $workerClassName")
         return factoryProvider.get().create(context, workerParameters)
     }
 }

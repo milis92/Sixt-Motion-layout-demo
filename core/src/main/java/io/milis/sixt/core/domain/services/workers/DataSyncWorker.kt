@@ -11,20 +11,21 @@ import io.milis.sixt.core.domain.services.daos.CarDao
 import io.milis.sixt.core.domain.services.remote.RemoteService
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import timber.log.Timber
 import javax.inject.Named
 
 class DataSyncWorker
 @AssistedInject constructor(
         @Assisted private val context: Context,
         @Assisted private val params: WorkerParameters,
-        private val carDao: CarDao,
+        private val carsDao: CarDao,
         private val remoteService: RemoteService,
         @Named(Io) private val scheduler: Scheduler
 ) : RxWorker(context, params) {
 
     override fun createWork(): Single<Result> {
         return remoteService.getCars().doOnSuccess {
-            carDao.sync(it)
+            carsDao.sync(it)
         }.map {
             Result.success()
         }
