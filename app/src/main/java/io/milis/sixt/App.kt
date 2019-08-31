@@ -1,11 +1,6 @@
 package io.milis.sixt
 
 import android.app.Application
-import android.content.Context
-import androidx.work.Configuration
-import androidx.work.WorkManager
-import io.milis.sixt.core.dagger.CoreComponent
-import io.milis.sixt.core.dagger.DaggerCoreComponent
 import timber.log.Timber
 
 class App : Application() {

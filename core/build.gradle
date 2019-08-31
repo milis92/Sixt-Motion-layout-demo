@@ -57,6 +57,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
 
+    implementation "androidx.work:work-runtime:${versions.workManager}"
     implementation "androidx.work:work-runtime-ktx:${versions.workManager}"
     implementation "androidx.work:work-rxjava2:${versions.workManager}"
 
