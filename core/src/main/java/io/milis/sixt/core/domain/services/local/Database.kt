@@ -2,7 +2,7 @@ package io.milis.sixt.core.domain.services.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import io.milis.sixt.core.domain.services.daos.CarDao
+import io.milis.sixt.core.domain.services.daos.CarLocalService
 import io.milis.sixt.core.domain.services.entities.Car
 
 @Database(
@@ -13,8 +13,8 @@ import io.milis.sixt.core.domain.services.entities.Car
         views = [],
         exportSchema = false
 )
-abstract class Database : RoomDatabase() {
+internal abstract class Database : RoomDatabase() {
 
-    abstract fun cars(): CarDao
+    abstract fun cars(): CarLocalService
 
 }

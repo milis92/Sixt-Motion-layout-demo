@@ -1,14 +1,14 @@
 package io.milis.sixt.core.dagger.providers
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import io.milis.sixt.core.domain.services.local.Database
-import io.milis.sixt.core.domain.services.remote.RemoteService
+import io.milis.sixt.core.domain.services.remote.CarRemoteService
 import dagger.Module
 import dagger.Provides
 import io.milis.sixt.core.BuildConfig
 import io.milis.sixt.core.dagger.scopes.ApplicationScope
-import io.milis.sixt.core.domain.services.daos.CarDao
+import io.milis.sixt.core.domain.services.daos.CarLocalService
 import retrofit2.Retrofit
 
 @Module
@@ -16,19 +16,19 @@ internal class ServiceModule {
 
     @ApplicationScope
     @Provides
-    fun provideRemoteService(retrofit: Retrofit): RemoteService =
-            retrofit.create(RemoteService::class.java)
+    fun provideRemoteService(retrofit: Retrofit): CarRemoteService =
+            retrofit.create(CarRemoteService::class.java)
 
     @ApplicationScope
     @Provides
-    fun provideLocalService(application: Application): Database =
+    fun provideLocalService(context: Context): Database =
             Room.databaseBuilder(
-                    application,
+                    context,
                     Database::class.java,
                     BuildConfig.LIBRARY_PACKAGE_NAME
             ).build()
 
     @ApplicationScope
     @Provides
-    fun provideCarDao(database: Database): CarDao = database.cars()
+    fun provideCarDao(database: Database): CarLocalService = database.cars()
 }

@@ -19,22 +19,4 @@ class App : Application() {
             //Plant some other tree
         }
     }
-
-    private val coreComponent: CoreComponent by lazy {
-        val component = DaggerCoreComponent.factory().create(this)
-
-        WorkManager.initialize(this,
-                Configuration.Builder()
-                        .setWorkerFactory(component.workerFactory())
-                        .build())
-        component
-    }
-
-    companion object {
-
-        @JvmStatic
-        fun applicationComponent(context: Context) =
-                (context.applicationContext as App).coreComponent
-
-    }
 }

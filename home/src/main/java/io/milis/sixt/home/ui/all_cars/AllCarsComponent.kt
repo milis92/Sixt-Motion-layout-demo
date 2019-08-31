@@ -6,6 +6,7 @@ import io.milis.sixt.core.dagger.BaseActivityComponent
 import io.milis.sixt.core.dagger.CoreComponent
 import dagger.Component
 import io.milis.sixt.App
+import io.milis.sixt.core.Core
 import io.milis.sixt.core.dagger.scopes.ApplicationScope
 import io.milis.sixt.core.dagger.scopes.FeatureScope
 
@@ -28,6 +29,6 @@ internal abstract class AllCarsComponent : BaseActivityComponent<AllCarsActivity
 
 fun AllCarsActivity.inject() {
     DaggerAllCarsComponent.factory()
-            .create(App.applicationComponent(this), layoutInflater)
+            .create(Core.component, layoutInflater)
             .inject(this)
 }

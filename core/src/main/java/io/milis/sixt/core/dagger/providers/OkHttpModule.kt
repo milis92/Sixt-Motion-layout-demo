@@ -34,6 +34,15 @@ internal class OkHttpModule {
 
     @ApplicationScope
     @Provides
+    fun provideDefaultHeaders(): Headers = headersOf(
+            "Content-Type", "application/json",
+            "Accept", "application/json",
+            "X-Client-Platform", "android",
+            "X-Client-Version", BuildConfig.VERSION_NAME
+    )
+
+    @ApplicationScope
+    @Provides
     fun provideOkHttpClient(
             okHttpClientBuilder: OkHttpClient.Builder,
             loggingInterceptor: HttpLoggingInterceptor,
@@ -43,13 +52,4 @@ internal class OkHttpModule {
                 addInterceptor(requestInterceptor)
                 addInterceptor(loggingInterceptor)
             }.build()
-
-    @ApplicationScope
-    @Provides
-    fun provideDefaultHeaders(): Headers = headersOf(
-            "Content-Type", "application/json",
-            "Accept", "application/json",
-            "X-Client-Platform", "android",
-            "X-Client-Version", BuildConfig.VERSION_NAME
-    )
 }

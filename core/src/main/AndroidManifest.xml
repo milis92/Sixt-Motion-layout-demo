@@ -2,13 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="io.milis.sixt.core">
 
-
     <application>
         <provider
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"
             android:exported="false"
             tools:node="remove"/>
+
+        <provider
+            android:name=".Core"
+            android:authorities="io.milis.sixt.core.Core"
+            android:exported="false" />
     </application>
 
 </manifest>

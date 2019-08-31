@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import dagger.BindsInstance
 import dagger.Component
 import io.milis.sixt.App
+import io.milis.sixt.core.Core
 import io.milis.sixt.core.dagger.BaseActivityComponent
 import io.milis.sixt.core.dagger.CoreComponent
 import io.milis.sixt.core.dagger.scopes.ApplicationScope
@@ -30,6 +31,6 @@ internal abstract class HomeComponent : BaseActivityComponent<HomeActivity> {
 
 fun HomeActivity.inject() {
     DaggerHomeComponent.factory()
-            .create(App.applicationComponent(this), layoutInflater)
+            .create(Core.component, layoutInflater)
             .inject(this)
 }

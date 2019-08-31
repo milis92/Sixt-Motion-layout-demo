@@ -24,11 +24,11 @@ internal class CoreModule {
 
     @ApplicationScope
     @Provides
-    fun provideSharedPreferences(application: Application): SharedPreferences =
-            application.getSharedPreferences(BuildConfig.LIBRARY_PACKAGE_NAME, Context.MODE_PRIVATE)
+    fun provideSharedPreferences(context: Context): SharedPreferences =
+            context.getSharedPreferences(BuildConfig.LIBRARY_PACKAGE_NAME, Context.MODE_PRIVATE)
 
     @ApplicationScope
     @Provides
-    fun provideWorkManager(application: Application): WorkManager = WorkManager.getInstance(application)
+    fun provideWorkManager(context: Context): WorkManager = WorkManager.getInstance(context)
 
 }
