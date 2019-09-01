@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Home</string>
+    <string name="home_search_placeholder">Find cars</string>
+    <string name="home_search_hint">Try Bmw, Mini</string>
+    <string name="home_navigation_list">All vehicles</string>
+    <string name="home_details_direction">directions</string>
+    <string name="home_details_item_name">Owner</string>
+    <string name="home_details_item_fuel">Fuel type</string>
+    <string name="home_details_item_licence">Licence plate</string>
+    <string name="home_details_item_transmission">Transmission</string>
+    <string name="all_cars_title">All cars</string>
+</resources>

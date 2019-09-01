@@ -1,11 +1,70 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="BaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorSecondary">@color/orange</item>
+        <item name="colorAccent">@color/orange</item>
+        <item name="colorControlNormal">@color/orange</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
+        <item name="android:navigationBarColor">@color/grayDark</item>
+        <item name="android:statusBarColor">@color/grayDark</item>
+        <item name="android:windowBackground">@color/grayDark</item>
+    </style>
+
+    <style name="BaseTheme.FullScreen" parent="BaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseTheme.FullScreen.Translucent" parent="BaseTheme.FullScreen">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="BaseTheme.Splash" parent="BaseTheme.FullScreen">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:background">@drawable/splash_background</item>
+    </style>
+
+    <!--Placeholders overridden in sub-modules-->
+    <style name="BaseTheme.Home" parent="BaseTheme" />
+
+    <style name="BaseTheme.AllCars" parent="BaseTheme" />
+
+    <style name="TextView" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="TextView.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="TextView.Subtitle" parent="TextView">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/roboto_thin</item>
+    </style>
+
+    <style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">12dp</item>
+        <item name="backgroundTint">@color/gray</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/grayDark</item>
+        <item name="android:elevation">12dp</item>
+        <item name="android:titleTextStyle">@style/TextView.Title</item>
     </style>
 
 </resources>

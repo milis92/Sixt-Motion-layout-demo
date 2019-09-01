@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
+
 apply from: '../common_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -11,7 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testOptions.unitTests.includeAndroidResources = true
     }
 
     buildTypes {
@@ -26,21 +29,37 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
     flavorDimensions "configuration"
 
     productFlavors {
         staging {
             dimension "configuration"
-            buildConfigField "String", "API_BASE_URL", '"https://api.bmapp.ch/"'
+            buildConfigField "String", "API_BASE_URL", '"https://cdn.sixt.io"'
         }
         production {
             dimension "configuration"
-            buildConfigField "String", "API_BASE_URL", '"https://https://api.bmapp.ch/"'
+            buildConfigField "String", "API_BASE_URL", '" https://cdn.sixt.io"'
+        }
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/java"
         }
     }
 }
 
 dependencies {
+    compileOnly "com.squareup.inject:assisted-inject-annotations-dagger2:${versions.assisted}"
+    kapt "com.squareup.inject:assisted-inject-processor-dagger2:${versions.assisted}"
+
     implementation "com.google.code.gson:gson:${versions.gson}"
 
     implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
@@ -49,6 +68,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+
+    implementation "androidx.work:work-runtime:${versions.workManager}"
+    implementation "androidx.work:work-runtime-ktx:${versions.workManager}"
+    implementation "androidx.work:work-rxjava2:${versions.workManager}"
 
 }
 

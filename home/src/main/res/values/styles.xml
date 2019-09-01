@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="BaseTheme.Home" parent="BaseTheme.FullScreen.Translucent" />
+
+    <style name="BaseTheme.AllCars" parent="BaseTheme">
+
+    </style>
+
+    <style name="SearchView" parent="MaterialSearchBarDark">
+        <item name="mt_searchBarColor">@color/grayDark</item>
+        <item name="mt_dividerColor">@color/orange</item>
+        <item name="mt_navIconTint">@color/orange</item>
+        <item name="mt_searchIconTint">@color/orange</item>
+        <item name="mt_clearIconTint">@color/orange</item>
+        <item name="mt_menuIconTint">@color/orange</item>
+        <item name="mt_backIconTint">@color/orange</item>
+        <item name="mt_textCursorTint">@color/orange</item>
+        <item name="mt_textColor">@color/white</item>
+        <item name="mt_hintColor">@color/gray</item>
+        <item name="mt_placeholderColor">@color/searchBarPlaceholderColorDark</item>
+        <item name="mt_highlightedTextColor">@color/orange</item>
+    </style>
+</resources>
