@@ -23,7 +23,7 @@ class AllCarsPresenter @Inject constructor(@Named(SchedulerModule.Io) private va
                             view?.onCarsLoaded(it)
                         },
                         onError = {
-                            Timber.e(it)
+                            view?.onFetchError(it)
                         }).addTo(compositeDisposable)
     }
 

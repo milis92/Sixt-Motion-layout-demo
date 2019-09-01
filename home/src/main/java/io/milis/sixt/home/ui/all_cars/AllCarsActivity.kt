@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 class AllCarsActivity : MvpActivity(), AllCarsView {
 
-
     @Inject
     lateinit var adapter: AllCarsAdapter
 
@@ -34,5 +33,10 @@ class AllCarsActivity : MvpActivity(), AllCarsView {
     override fun onCarsLoaded(cars: List<Car>) {
         adapter.submitList(cars)
     }
+
+    override fun onFetchError(throwable: Throwable) {
+
+    }
+
 }
 

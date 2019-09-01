@@ -4,7 +4,6 @@ import io.milis.sixt.core.common.mvp.MvpRxPresenter
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Io
 import io.milis.sixt.core.dagger.providers.SchedulerModule.Companion.Main
 import io.milis.sixt.core.domain.repositories.CarsRepository
-import io.milis.sixt.core.domain.services.entities.Car
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -25,7 +24,7 @@ class HomePresenter @Inject constructor(@Named(Io) private val schedulerIo: Sche
                             view?.onCarsLoaded(it)
                         },
                         onError = {
-                            Timber.e(it)
+                            view?.onFetchError(it)
                         }).addTo(compositeDisposable)
     }
 
@@ -38,7 +37,7 @@ class HomePresenter @Inject constructor(@Named(Io) private val schedulerIo: Sche
                             view?.onCarsLoaded(it)
                         },
                         onError = {
-                            Timber.e(it)
+                            view?.onFetchError(it)
                         }).addTo(compositeDisposable)
     }
 

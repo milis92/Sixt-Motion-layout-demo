@@ -5,5 +5,6 @@ import io.milis.sixt.core.domain.services.entities.Car
 
 interface AllCarsView : MvpView {
     fun onCarsLoaded(cars: List<Car>)
+    fun onFetchError(throwable: Throwable)
 }
 

@@ -1,7 +1,7 @@
 dependencies {
     kaptTest "com.google.dagger:dagger-compiler:${versions.dagger}"
     testImplementation "junit:junit:${versions.junit}"
-    testImplementation "org.mockito:mockito-core:${versions.mockito}"
+    testImplementation "org.mockito:mockito-inline:${versions.mockito}"
     testImplementation "androidx.test:core:${versions.androidxTestCore}"
     testImplementation "androidx.test:runner:${versions.testRules}"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.kmock}"
@@ -33,7 +33,7 @@ dependencies {
     androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.kmock}"
     androidTestImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
     androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
-    androidTestImplementation "org.mockito:mockito-core:${versions.mockito}"
+    androidTestImplementation "org.mockito:mockito-inline:${versions.mockito}"
     androidTestImplementation "androidx.work:work-testing:${versions.workManager}"
 
 }
