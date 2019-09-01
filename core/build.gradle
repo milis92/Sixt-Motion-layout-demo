@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
+
 apply from: '../common_dependencies.gradle'
+apply from: '../test_dependencies.gradle'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -11,7 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testOptions.unitTests.includeAndroidResources = true
     }
 
     buildTypes {
@@ -40,6 +43,15 @@ android {
         production {
             dimension "configuration"
             buildConfigField "String", "API_BASE_URL", '" https://cdn.sixt.io"'
+        }
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/java"
         }
     }
 }

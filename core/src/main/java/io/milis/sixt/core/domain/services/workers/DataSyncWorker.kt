@@ -1,6 +1,7 @@
 package io.milis.sixt.core.domain.services.workers
 
 import android.content.Context
+import androidx.annotation.VisibleForTesting
 import androidx.work.RxWorker
 import androidx.work.WorkerParameters
 import com.squareup.inject.assisted.Assisted
@@ -20,7 +21,8 @@ class DataSyncWorker
         @Named(Io) private val scheduler: Scheduler
 ) : RxWorker(context, params) {
 
-    override fun createWork(): Single<Result> {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    public override fun createWork(): Single<Result> {
         return carsRepository.sync()
                 .andThen(Single.just(Result.success()))
     }

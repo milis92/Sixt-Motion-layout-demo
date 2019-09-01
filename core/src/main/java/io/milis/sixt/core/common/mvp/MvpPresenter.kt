@@ -1,18 +1,27 @@
 package io.milis.sixt.core.common.mvp
 
+import androidx.annotation.CallSuper
+import androidx.annotation.VisibleForTesting
 import io.reactivex.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
-abstract class MvpPresenter<T : MvpView> {
+open class MvpPresenter<T : MvpView> {
 
-    private var viewReference: WeakReference<T>? = null
-    protected val view
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    var viewReference: WeakReference<T>? = null
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    val view
         get() = viewReference?.get()
 
-    fun onCreate(view: T) {
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    @CallSuper
+    open fun onCreate(view: T) {
         this.viewReference = WeakReference(view)
     }
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    @CallSuper
     open fun onDestroy() {
         viewReference?.clear()
     }
@@ -20,9 +29,13 @@ abstract class MvpPresenter<T : MvpView> {
 
 open class MvpRxPresenter<T : MvpView> : MvpPresenter<T>() {
 
-    protected val compositeDisposable = CompositeDisposable()
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    val compositeDisposable = CompositeDisposable()
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    @CallSuper
     override fun onDestroy() {
+        compositeDisposable.dispose()
         compositeDisposable.clear()
         super.onDestroy()
     }

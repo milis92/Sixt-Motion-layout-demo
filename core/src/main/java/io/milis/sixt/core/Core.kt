@@ -9,6 +9,8 @@ import io.milis.sixt.core.dagger.DaggerCoreComponent
 import io.milis.sixt.core.domain.services.workers.DataSyncWorker
 import java.util.concurrent.TimeUnit
 
+
+//This is just a smart hack to launch the Library project on the app start
 class Core : ContentProvider() {
 
     companion object {
@@ -29,10 +31,9 @@ class Core : ContentProvider() {
         component.workManager().enqueueUniquePeriodicWork(
                 SYNC_JOB_NAME,
                 ExistingPeriodicWorkPolicy.REPLACE,
-                PeriodicWorkRequestBuilder<DataSyncWorker>(10, TimeUnit.MINUTES)
+                PeriodicWorkRequestBuilder<DataSyncWorker>(30, TimeUnit.MINUTES)
                         .setConstraints(Constraints.Builder()
                                 .setRequiredNetworkType(NetworkType.CONNECTED)
-                                .setRequiresBatteryNotLow(true)
                                 .build())
                         .build()
         )

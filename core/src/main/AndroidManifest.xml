@@ -11,7 +11,7 @@
 
         <provider
             android:name=".Core"
-            android:authorities="io.milis.sixt.core.Core"
+            android:authorities="${applicationId}.core.Core"
             android:exported="false" />
     </application>
 

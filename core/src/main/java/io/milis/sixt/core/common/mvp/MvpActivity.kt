@@ -1,6 +1,7 @@
 package io.milis.sixt.core.common.mvp
 
 import android.view.MenuItem
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import io.milis.sixt.core.R
