@@ -1,5 +1,6 @@
 package io.milis.sixt.core.domain.services.entities
 
+import android.annotation.SuppressLint
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity

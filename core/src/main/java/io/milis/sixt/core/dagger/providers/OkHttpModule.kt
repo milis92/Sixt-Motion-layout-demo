@@ -4,6 +4,7 @@ import io.milis.sixt.core.domain.HeadersInterceptor
 import dagger.Module
 import dagger.Provides
 import io.milis.sixt.core.BuildConfig
+import io.milis.sixt.core.dagger.scopes.ApplicationScope
 import okhttp3.Headers
 import okhttp3.Headers.Companion.headersOf
 import okhttp3.OkHttpClient
@@ -12,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 @Module
 internal class OkHttpModule {
 
+    @ApplicationScope
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
             HttpLoggingInterceptor().apply {
@@ -22,6 +24,7 @@ internal class OkHttpModule {
                 }
             }
 
+    @ApplicationScope
     @Provides
     fun provideOkHttpClientBuilder() =
             OkHttpClient.Builder().apply {
@@ -29,6 +32,16 @@ internal class OkHttpModule {
                 followSslRedirects(true)
             }
 
+    @ApplicationScope
+    @Provides
+    fun provideDefaultHeaders(): Headers = headersOf(
+            "Content-Type", "application/json",
+            "Accept", "application/json",
+            "X-Client-Platform", "android",
+            "X-Client-Version", BuildConfig.VERSION_NAME
+    )
+
+    @ApplicationScope
     @Provides
     fun provideOkHttpClient(
             okHttpClientBuilder: OkHttpClient.Builder,
@@ -39,12 +52,4 @@ internal class OkHttpModule {
                 addInterceptor(requestInterceptor)
                 addInterceptor(loggingInterceptor)
             }.build()
-
-    @Provides
-    fun provideDefaultHeaders(): Headers = headersOf(
-            "Content-Type", "application/json",
-            "Accept", "application/json",
-            "X-Client-Platform", "android",
-            "X-Client-Version", BuildConfig.VERSION_NAME
-    )
 }

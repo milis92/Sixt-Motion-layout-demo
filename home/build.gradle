@@ -1,8 +1,7 @@
 apply plugin: 'com.android.dynamic-feature'
 
 apply from: '../common_dependencies.gradle'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: '../test_dependencies.gradle'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -11,7 +10,7 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {

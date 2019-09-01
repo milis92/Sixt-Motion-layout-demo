@@ -10,7 +10,7 @@ import io.reactivex.annotations.CheckReturnValue
 
 
 @Dao
-abstract class CarDao {
+abstract class CarLocalService {
 
     @CheckReturnValue
     @Query("SELECT * FROM cars")

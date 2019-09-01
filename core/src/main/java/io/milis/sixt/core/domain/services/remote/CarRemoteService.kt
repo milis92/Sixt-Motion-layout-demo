@@ -5,7 +5,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.*
 
-interface RemoteService {
+interface CarRemoteService {
 
     @Headers("X-Anonymous: true")
     @GET("/codingtask/cars")

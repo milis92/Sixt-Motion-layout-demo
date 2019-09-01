@@ -7,6 +7,7 @@ import androidx.work.WorkManager
 import dagger.Module
 import dagger.Provides
 import io.milis.sixt.core.BuildConfig
+import io.milis.sixt.core.dagger.scopes.ApplicationScope
 
 @Module(
         includes = [
@@ -21,11 +22,13 @@ import io.milis.sixt.core.BuildConfig
 )
 internal class CoreModule {
 
+    @ApplicationScope
     @Provides
-    fun provideSharedPreferences(application: Application): SharedPreferences =
-            application.getSharedPreferences(BuildConfig.LIBRARY_PACKAGE_NAME, Context.MODE_PRIVATE)
+    fun provideSharedPreferences(context: Context): SharedPreferences =
+            context.getSharedPreferences(BuildConfig.LIBRARY_PACKAGE_NAME, Context.MODE_PRIVATE)
 
+    @ApplicationScope
     @Provides
-    fun provideWorkManager(application: Application): WorkManager = WorkManager.getInstance(application)
+    fun provideWorkManager(context: Context): WorkManager = WorkManager.getInstance(context)
 
 }

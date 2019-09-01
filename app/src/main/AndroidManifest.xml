@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/BaseTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
-        tools:replace="android:allowBackup,android:theme">
+        tools:replace="android:allowBackup">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -24,7 +24,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
 
         <activity
             android:name=".ui.splash.SplashActivity"

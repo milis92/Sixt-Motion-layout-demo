@@ -1,0 +1,39 @@
+dependencies {
+    kaptTest "com.google.dagger:dagger-compiler:${versions.dagger}"
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "org.mockito:mockito-inline:${versions.mockito}"
+    testImplementation "androidx.test:core:${versions.androidxTestCore}"
+    testImplementation "androidx.test:runner:${versions.testRules}"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.kmock}"
+    testImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
+    testImplementation "com.google.truth:truth:${versions.gTruth}"
+    testImplementation "android.arch.core:core-testing:${versions.androidxArch}"
+
+    // Work around issue with runtime classpath version conflict
+    implementation "androidx.arch.core:core-runtime:${versions.androidxCoreRuntime}"
+    implementation "androidx.collection:collection:${versions.androidxCollection}"
+    implementation "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}"
+
+    // Workaround for dependency conflict during assembleAndroidTest
+    androidTestImplementation("androidx.arch.core:core-runtime:2.0.1-alpha01")
+    androidTestImplementation "com.google.truth:truth:${versions.gTruth}"
+
+    // Work around issue with runtime classpath version conflict
+    androidTestImplementation "androidx.arch.core:core-testing:${versions.androidxArch}"
+    androidTestImplementation "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}"
+
+    kaptAndroidTest "com.google.dagger:dagger-compiler:${versions.dagger}"
+    androidTestImplementation "androidx.arch.core:core-testing:${versions.androidxArch}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${versions.espresso}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.extJunit}"
+    androidTestImplementation "androidx.test:rules:${versions.testRules}"
+    androidTestImplementation "androidx.test:runner:${versions.testRules}"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:${versions.uiAutomator}"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.kmock}"
+    androidTestImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
+    androidTestImplementation "org.mockito:mockito-android:${versions.mockito}"
+    androidTestImplementation "org.mockito:mockito-inline:${versions.mockito}"
+    androidTestImplementation "androidx.work:work-testing:${versions.workManager}"
+
+}

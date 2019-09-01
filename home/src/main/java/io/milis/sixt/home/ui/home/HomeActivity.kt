@@ -160,5 +160,9 @@ class HomeActivity : MvpActivity(), HomeView, MaterialSearchBar.OnSearchActionLi
     private fun MaterialSearchBar.afterTextChanged(afterTextChanged: (String) -> Unit) {
         this.mt_editText.afterTextChanged(afterTextChanged)
     }
+
+    override fun onFetchError(throwable: Throwable) {
+
+    }
 }
 
